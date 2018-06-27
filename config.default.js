@@ -22,10 +22,17 @@ module.exports = function () {
         'name': 'node.coordinates',
         'value': 'GeoURI'
       },
-      //    {
-      //      "name": "node.contact",
-      //      "value": "owner"
-      //    },
+      {
+        'name': 'node.contact',
+        'value': function (d) {
+          if (d.owner) {
+            return d.owner;
+          } else {
+            var V = require('snabbdom').default;
+            return V.h('span', { props: { className: 'missing' } }, 'keine Kontaktinformation hinterlegt');
+          }
+        }
+      },
 
       // Examples for functions
       // {
