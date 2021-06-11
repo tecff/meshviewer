@@ -1,73 +1,68 @@
 module.exports = function () {
   return {
+    // Array of data provider are supported
+    'dataPath': [
+      'https://map.tecff.de/yanic/'
+    ],
+    'siteName': 'Freifunk Altdorf',
+    'maxAgeAlert': 1,
+
     // Variables are NODE_ID and NODE_NAME (only a-z0-9\- other chars are replaced with _)
     'nodeInfos': [
       {
-        'name': 'Clientstatistik',
-        'href': 'https://regensburg.freifunk.net/netz/statistik/node/{NODE_ID}/',
-        'image': 'https://grafana.regensburg.freifunk.net/render/d-solo/000000026/node?panelId=1&var-node={NODE_ID}&from=now-1d&width=650&height=350&theme=light&_t={TIME}',
-        'title': 'Clientstatistik für {NODE_ID} - weiteren Statistiken',
-        'width': 650,
-        'height': 350
+        "name": "Clients (1 Tag)",
+        "image": "https://stats.tecff.de/render/d-solo/000000003/node?panelId=1&var-node_id={NODE_ID}&width=650&height=300&theme=light&from=now-24h",
+        "href": "https://stats.tecff.de/d/000000003/node?var-node_id={NODE_ID}",
+        'title': 'Knoten {NODE_ID} - weitere Statistiken'
       },
       {
-        'name': 'Trafficstatistik',
-        'href': 'https://regensburg.freifunk.net/netz/statistik/node/{NODE_ID}/',
-        'image': 'https://grafana.regensburg.freifunk.net/render/d-solo/000000026/node?panelId=2&from=now-1d&var-node={NODE_ID}&width=650&height=350&theme=light&_t={TIME}',
-        'title': 'Trafficstatistik für {NODE_ID} - weiteren Statistiken',
-        'width': 650,
-        'height': 350
+        "name": "Traffic (24 Stunden)",
+        "image": "https://stats.tecff.de/render/d-solo/000000003/node?panelId=6&var-node_id={NODE_ID}&width=650&height=350&theme=light&from=now-24h",
+        "href": "https://stats.tecff.de/d/000000003/node?var-node_id={NODE_ID}",
+        'title': 'Knoten {NODE_ID} - weitere Statistiken'
       },
       {
-        'name': 'Systemlast',
-        'href': 'https://regensburg.freifunk.net/netz/statistik/node/{NODE_ID}/',
-        'image': 'https://grafana.regensburg.freifunk.net/render/d-solo/000000026/node?panelId=4&from=now-1d&var-node={NODE_ID}&width=650&height=350&theme=light&_t={TIME}',
-        'title': 'Systemlast für {NODE_ID} - weiteren Statistiken',
-        'width': 650,
-        'height': 350
+        'name': 'Airtime (24 Stunden)',
+        'image': 'https://stats.tecff.de/render/d-solo/000000003/node?panelId=33&var-node_id={NODE_ID}&width=650&height=300&theme=light&from=now-24h',
+        "href": "https://stats.tecff.de/d/000000003/node?var-node_id={NODE_ID}",
+        'title': 'Knoten {NODE_ID} - weitere Statistiken'
       },
       {
-        'name': 'Airtime',
-        'href': 'https://regensburg.freifunk.net/netz/statistik/node/{NODE_ID}/',
-        'image': 'https://grafana.regensburg.freifunk.net/render/d-solo/000000026/node?panelId=5&from=now-1d&var-node={NODE_ID}&width=650&height=350&theme=light&_t={TIME}',
-        'title': 'Airtime für {NODE_ID} - weiteren Statistiken',
-        'width': 650,
-        'height': 350
+        "name": "Clients (7 Tage)",
+        "image": "https://stats.tecff.de/render/d-solo/000000003/node?panelId=1&var-node_id={NODE_ID}&width=650&height=300&theme=light&from=now-7d",
+        "href": "https://stats.tecff.de/d/000000003/node?var-node_id={NODE_ID}",
+        'title': 'Knoten {NODE_ID} - weitere Statistiken'
+      },
+      {
+        "name": "Traffic (7 Tage)",
+        "image": "https://stats.tecff.de/render/d-solo/000000003/node?panelId=6&var-node_id={NODE_ID}&width=650&height=350&theme=light&from=now-7d",
+        "href": "https://stats.tecff.de/d/000000003/node?var-node_id={NODE_ID}",
+        'title': 'Knoten {NODE_ID} - weitere Statistiken'
       }
     ],
     'linkInfos': [
       {
-        'name': 'Statistik für alle Links zwischen diese Knoten',
-        'image': 'https://grafana.regensburg.freifunk.net/render/d-solo/nvSNqoHmz/link?panelId=7&var-node={SOURCE_ID}&var-nodetolink={TARGET_ID}&from=now-1d&&width=650&height=350&theme=light&_t={TIME}',
-        'title': 'Linkstatistik des letzten Tages, min und max aller Links zwischen diesen Knoten',
-        'width': 650,
-        'height': 350
+        'name': 'Statistik für alle Links zwischen diesen Knoten',
+        'image': 'https://stats.tecff.de/render/d-solo/000000003/node?panelId=36&var-node_id={SOURCE_ID}&var-nodetolink={TARGET_ID}&width=650&height=300&theme=light&from=now-24h',
+        'href': 'https://stats.tecff.de/d/000000003/node?var-node_id={SOURCE_ID}&panelId=36&fullscreen&var-nodetolink={TARGET_ID}',
+        'title': 'Linkstatistik des letzten Tages, min und max aller Links zwischen diesen Knoten'
       }
     ],
-    'globalInfos': [
-      {
-        'name': 'Globale Statistik',
-        'href': 'https://regensburg.freifunk.net/netz/statistik',
-        'image': 'https://grafana.regensburg.freifunk.net/render/d-solo/000000028/globals?panelId=2&from=now-7d&&width=650&height=350&theme=light&_t={TIME}',
-        'title': 'Globale Statistik - weiteren Statistiken',
-        'width': 650,
-        'height': 350
-      }
-    ],
-    // Array of data provider are supported
-    'dataPath': [
-      'https://regensburg.freifunk.net/data/'
-    ],
-    'siteName': 'Freifunk Regensburg',
     'mapLayers': [
       {
-        'name': 'Wikimedia OSM Map',
-        'url': 'https://maps.wikimedia.org/osm-intl/{z}/{x}/{y}{r}.png',
-        'config': {
-          'maxZoom': 20,
-          'subdomains': '1234',
-          'attribution': '<a href="https://wikimediafoundation.org/wiki/Maps_Terms_of_Use" rel="noopener" target="_blank">Wikimedia maps</a><a href="http://www.openmaptiles.org/" target="_blank">&copy; OpenMapTiles</a> <a href="http://www.openstreetmap.org/about/" target="_blank" rel="noopener">&copy; OpenStreetMap contributors</a>',
-          'start': 6
+        "name": "OpenStreetMap Mapnik",
+        "url": "https://osmtiles.tecff.de/osm/{z}/{x}/{y}.png",
+        "config": {
+          "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>. ♥ <a href=\"http://donate.openstreetmap.org\" class=\"donate-attr\">Make a Donation</a>",
+          "maxZoom": 19
+        }
+      },
+      {
+        "name": "OpenStreetMap Humanitarian/HOT)",
+        "url": "https://osmtiles.tecff.de/osmhot/{z}/{x}/{y}.png",
+        "config": {
+          "attribution": "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap contributors</a>. Tiles courtesy of <a href=\"http://hot.openstreetmap.org\" target=\"_blank\">Humanitarian OpenStreetMap Team</a>",
+          "maxZoom": 20
         }
       }
     ],
@@ -75,33 +70,33 @@ module.exports = function () {
     'fixedCenter': [
       // Northwest
       [
-        49.3522,
-        11.7752
+        48.7014,
+        11.8666
       ],
       // Southeast
       [
-        48.7480,
-        12.8917
+        48.2421,
+        12.7689
       ]
     ],
     'domainNames': [
       {
-        'domain': 'ffrgb-bat15',
-        'name': 'Regensburg'
+        'site': 'tecff',
+        'name': 'Freifunk Altdorf'
       },
       {
-        'domain': 'ffrgb',
-        'name': 'Regensburg'
+        'site': 'ffgri.init.tk',
+        'name': 'Freifunk Grießbach'
       }
     ],
     'linkList': [
       {
         'title': 'Impressum',
-        'href': '/verein/impressum/'
+        'href': 'https://www.freifunk-altdorf.de/verein/impressum/'
       },
       {
         'title': 'Datenschutz',
-        'href': '/verein/datenschutz/'
+        'href': 'https://www.freifunk-altdorf.de/verein/impressum/datenschutz/'
       }
     ]
   };
