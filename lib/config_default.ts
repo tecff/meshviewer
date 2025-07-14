@@ -249,6 +249,10 @@ export const config: Config = {
       value: "GeoURI",
     },
     {
+      name: "node.contact",
+      value: "Contact",
+    },
+    {
       name: "node.hardware",
       value: "model",
     },

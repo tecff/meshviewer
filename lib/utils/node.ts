@@ -46,6 +46,7 @@ export type NodeId = string;
 export interface Node {
   node_id: NodeId;
   hostname: string;
+  owner?: string;
   domain?: string;
   firstseen: Moment;
   lastseen: Moment;
@@ -101,7 +102,7 @@ const self = {
 
   showGeoURI(data: Node) {
     if (!helper.hasLocation(data)) {
-      return undefined;
+      return h("td", { props: { className: "missing" } }, "kein Standort hinterlegt");
     }
 
     return h(
@@ -112,6 +113,13 @@ const self = {
         Number(data.location.latitude.toFixed(6)) + ", " + Number(data.location.longitude.toFixed(6)),
       ),
     );
+  },
+
+  showContact(node: Node) {
+    if (node.owner) {
+      return node.owner;
+    }
+    return h("span", { props: { className: "missing" } }, "keine Kontaktinformation hinterlegt");
   },
 
   showGateway(node: Node) {
