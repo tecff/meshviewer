@@ -152,3 +152,8 @@
 .offline {
   color: variables.$color-offline;
 }
+
+.missing {
+  color: variables.$color-offline;
+  font-style: italic;
+}
