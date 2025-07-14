@@ -2,6 +2,7 @@ import { LanguageCode } from "./utils/language.js";
 import { Node, NodeId } from "./utils/node.js";
 import { GeoJSONOptions, GridLayerOptions, LatLngBoundsExpression } from "leaflet";
 import { GeoJsonObject } from "geojson";
+import { h } from "snabbdom";
 
 interface NodeAttr {
   name: string;
@@ -207,6 +208,16 @@ export const config: Config = {
     {
       name: "node.coordinates",
       value: "GeoURI",
+    },
+    {
+      name: "node.contact",
+      value: function (d) {
+        if (d.owner) {
+          return d.owner;
+        } else {
+          return h("span", { props: { className: "missing" } }, "keine Kontaktinformation hinterlegt");
+        }
+      }
     },
     {
       name: "node.hardware",

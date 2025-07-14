@@ -103,7 +103,11 @@ self.showStatus = function showStatus(node: Node) {
 
 self.showGeoURI = function showGeoURI(data: Node) {
   if (!helper.hasLocation(data)) {
-    return undefined;
+    return h(
+      "td",
+      { props: { className: "missing" } },
+      "kein Standort hinterlegt"
+    );
   }
 
   return h(
