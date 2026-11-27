@@ -92,7 +92,10 @@ export default defineConfig(({ command, mode }) => ({
         globPatterns: ["**/*.{js,css,html,ico,png,svg,ttf,woff,woff2}"],
         // Matched against pathname + search: keep the index.html fallback off
         // real files, otherwise /sw.js is served as the app itself.
-        navigateFallbackDenylist: [/\.[a-z0-9]+(\?|$)/i],
+        // /.within.website/ is Anubis (bot shield in front of the map): its
+        // pass-challenge redirect must reach the server, or the service worker
+        // answers it with a cached page and the challenge loops forever.
+        navigateFallbackDenylist: [/\.[a-z0-9]+(\?|$)/i, /^\/\.within\.website\//],
         cleanupOutdatedCaches: true,
       },
       manifest: {
